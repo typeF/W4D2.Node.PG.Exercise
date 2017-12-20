@@ -1,5 +1,6 @@
 const pg = require('pg');
 const settings = require('./settings');
+const moment = require('moment');
 
 const client = new pg.Client({
   user: settings.user,
@@ -25,6 +26,6 @@ function getFamousPerson (searchString){
       return console.error('error running query', err);
     }
     console.log(`Found ${result.rows.length} person(s) by the name '${searchString}': `);
-    console.log(`- ${result.rows[0].id}: ${result.rows[0].first_name} ${result.rows[0].last_name}, born '${result.rows[0].birthdate}'`);
+    console.log(`- ${result.rows[0].id}: ${result.rows[0].first_name} ${result.rows[0].last_name}, born '${moment(result.rows[0].birthdate).format('YYYY[-]MM[-]DD')}'`);
   });
 }

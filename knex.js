@@ -31,7 +31,7 @@ function getFamousPerson (searchString){
       }
       // console.log(rows);
       console.log(`Found ${rows.length} person(s) by the name '${searchString}': `);
-    console.log(`- ${rows[0].id}: ${rows[0].first_name} ${rows[0].last_name}, born '${rows[0].birthdate}'`);
+    console.log(`- ${rows[0].id}: ${rows[0].first_name} ${rows[0].last_name}, born '${moment(rows[0].birthdate).format('YYYY[-]MM[-]DD')}'`);
 
   });
 }
